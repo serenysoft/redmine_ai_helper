@@ -1,7 +1,15 @@
 ---
-description: Convert existing tasks into actionable, dependency-ordered GitHub issues for the feature based on available design artifacts.
-tools: ['github/github-mcp-server/issue_write']
+name: "speckit-taskstoissues"
+description: "Convert existing tasks into actionable, dependency-ordered GitHub issues for the feature based on available design artifacts."
+argument-hint: "Optional filter or label for GitHub issues"
+compatibility: "Requires spec-kit project structure with .specify/ directory"
+metadata:
+  author: "github-spec-kit"
+  source: "templates/commands/taskstoissues.md"
+user-invocable: true
+disable-model-invocation: true
 ---
+
 
 ## User Input
 

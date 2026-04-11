@@ -1,14 +1,15 @@
 ---
-description: Create or update the feature specification from a natural language feature description.
-handoffs: 
-  - label: Build Technical Plan
-    agent: speckit.plan
-    prompt: Create a plan for the spec. I am building with...
-  - label: Clarify Spec Requirements
-    agent: speckit.clarify
-    prompt: Clarify specification requirements
-    send: true
+name: "speckit-specify"
+description: "Create or update the feature specification from a natural language feature description."
+argument-hint: "Describe the feature you want to specify"
+compatibility: "Requires spec-kit project structure with .specify/ directory"
+metadata:
+  author: "github-spec-kit"
+  source: "templates/commands/specify.md"
+user-invocable: true
+disable-model-invocation: true
 ---
+
 
 ## User Input
 
