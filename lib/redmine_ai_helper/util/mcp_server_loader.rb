@@ -39,11 +39,8 @@ module RedmineAiHelper
               next
             end
 
-            # Create MCP client
-            mcp_client = create_mcp_client(server_name, server_config)
-
             # Create dynamic subclass
-            create_mcp_agent_subclass(class_name, server_name, mcp_client)
+            create_mcp_agent_subclass(class_name, server_name, server_config)
 
             ai_helper_logger.info "Successfully created MCP agent: #{class_name} for server '#{server_name}'"
           rescue => e
@@ -112,18 +109,20 @@ module RedmineAiHelper
       end
 
       # Create MCP client
-      def create_mcp_client(server_name, server_config)
+      def create_mcp_client(server_name, server_config, current_user: User.current)
+        resolved_server_config = resolve_dynamic_auth_config(server_name, server_config, current_user: current_user)
+
         # Allow implicit type inference
-        server_type = server_config["type"] || infer_server_type(server_config)
+        server_type = resolved_server_config["type"] || infer_server_type(resolved_server_config)
         case server_type
         when "stdio"
-          create_stdio_client(server_name, server_config)
+          create_stdio_client(server_name, resolved_server_config)
         when "http"
-          create_http_client(server_name, server_config)
+          create_http_client(server_name, resolved_server_config)
         when "sse"
-          create_sse_client(server_name, server_config)
+          create_sse_client(server_name, resolved_server_config)
         else
-          raise ArgumentError, "Unsupported MCP server type: #{server_config["type"] || "unknown"}"
+          raise ArgumentError, "Unsupported MCP server type: #{resolved_server_config["type"] || "unknown"}"
         end
       end
 
@@ -176,14 +175,78 @@ module RedmineAiHelper
         end
       end
 
+      # Resolve dynamic auth placeholders and apply Redmine defaults.
+      # @param server_name [String] MCP server name
+      # @param server_config [Hash] Original MCP server config
+      # @param current_user [User, nil] Current user context
+      # @return [Hash] Resolved MCP server config
+      def resolve_dynamic_auth_config(server_name, server_config, current_user:)
+        config = (server_config || {}).deep_dup
+        api_key = current_user_api_key(current_user)
+
+        if config["headers"].is_a?(Hash)
+          config["headers"] = config["headers"].transform_values { |value| replace_dynamic_placeholders(value, api_key) }
+        end
+
+        if config["env"].is_a?(Hash)
+          config["env"] = config["env"].transform_values { |value| replace_dynamic_placeholders(value, api_key) }
+        end
+
+        inject_redmine_api_key!(server_name, config, api_key)
+        config
+      end
+
+      # Returns current user's API key, generating one if needed.
+      # @param current_user [User, nil]
+      # @return [String, nil]
+      def current_user_api_key(current_user)
+        return nil unless current_user&.logged?
+
+        current_user.generate_api_key if current_user.api_key.blank?
+        current_user.api_key
+      rescue => e
+        ai_helper_logger.warn "Failed to resolve current user API key: #{e.message}"
+        nil
+      end
+
+      # Replace known API key placeholders with the resolved value.
+      # @param value [Object]
+      # @param api_key [String, nil]
+      # @return [Object]
+      def replace_dynamic_placeholders(value, api_key)
+        return value unless value.is_a?(String)
+
+        value.gsub(/\$\{current_user_api_key\}|\{\{current_user_api_key\}\}|__CURRENT_USER_API_KEY__/i, api_key.to_s)
+      end
+
+      # Inject default Redmine auth headers/envs for Redmine MCP servers.
+      # @param server_name [String]
+      # @param config [Hash]
+      # @param api_key [String, nil]
+      # @return [void]
+      def inject_redmine_api_key!(server_name, config, api_key)
+        return unless api_key.present?
+        return unless server_name.to_s.downcase.include?("redmine")
+
+        if config["url"]
+          config["headers"] ||= {}
+          config["headers"]["X-Redmine-API-Key"] ||= api_key
+        end
+
+        if config["command"] || config["args"] || config["type"] == "stdio"
+          config["env"] ||= {}
+          config["env"]["REDMINE_API_KEY"] ||= api_key
+        end
+      end
+
       # Dynamically create MCP agent subclass
-      def create_mcp_agent_subclass(class_name, server_name, mcp_client)
+      def create_mcp_agent_subclass(class_name, server_name, server_config)
         sub_agent_class = Class.new(RedmineAiHelper::BaseAgent) do
           @server_name = server_name
-          @mcp_client = mcp_client
+          @server_config = server_config
 
           class << self
-            attr_reader :server_name, :mcp_client
+            attr_reader :server_name, :server_config
           end
 
           define_method :role do
@@ -204,10 +267,22 @@ module RedmineAiHelper
           end
 
           define_method :available_tool_classes do
-            return @cached_tool_classes if @cached_tool_classes
-            @cached_tool_classes = RedmineAiHelper::Tools::McpTools.generate_tool_classes(
+            cache_key = User.current&.id || "anonymous"
+            @cached_tool_classes ||= {}
+            return @cached_tool_classes[cache_key] if @cached_tool_classes.key?(cache_key)
+
+            @mcp_clients ||= {}
+            mcp_client = @mcp_clients[cache_key] ||= RedmineAiHelper::Util::McpServerLoader.instance.send(
+              :create_mcp_client,
+              server_name,
+              server_config,
+              current_user: User.current,
+            )
+
+            @cached_tool_classes[cache_key] = RedmineAiHelper::Tools::McpTools.generate_tool_classes(
               mcp_server_name: server_name,
               mcp_client: mcp_client,
+              cache_key: cache_key,
             )
           rescue => e
             ai_helper_logger.error "Error loading tools for MCP server '#{server_name}': #{e.message}"

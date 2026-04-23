@@ -132,7 +132,7 @@ class McpServerLoaderTest < ActiveSupport::TestCase
       mock_logger = create_mock_logger
 
       @loader.stubs(:load_config).returns(config)
-      @loader.expects(:create_mcp_client).with("filesystem", server_config).returns(fake_client)
+      @loader.expects(:create_mcp_client).with("filesystem", server_config, current_user: nil).returns(fake_client)
       RedmineAiHelper::CustomLogger.stubs(:instance).returns(mock_logger)
 
       # Build fake tool instances (as ruby_llm-mcp returns)
@@ -140,6 +140,7 @@ class McpServerLoaderTest < ActiveSupport::TestCase
       RedmineAiHelper::Tools::McpTools.expects(:generate_tool_classes).with(
         mcp_server_name: "filesystem",
         mcp_client: fake_client,
+        cache_key: "anonymous",
       ).once.returns(fake_tools)
 
       stub_llm_provider
@@ -187,7 +188,7 @@ class McpServerLoaderTest < ActiveSupport::TestCase
       mock_logger.expects(:error).with(includes("Error loading tools for MCP server 'filesystem': boom"))
 
       @loader.stubs(:load_config).returns(config)
-      @loader.expects(:create_mcp_client).with("filesystem", server_config).returns(fake_client)
+      @loader.expects(:create_mcp_client).with("filesystem", server_config, current_user: nil).returns(fake_client)
       RedmineAiHelper::CustomLogger.stubs(:instance).returns(mock_logger)
 
       stub_llm_provider
@@ -216,7 +217,7 @@ class McpServerLoaderTest < ActiveSupport::TestCase
       mock_logger.expects(:error).with(includes("Error retrieving tools information for 'filesystem': tool failure"))
 
       @loader.stubs(:load_config).returns(config)
-      @loader.expects(:create_mcp_client).returns(fake_client)
+      @loader.stubs(:create_mcp_client).with("filesystem", config["mcpServers"]["filesystem"], current_user: nil).returns(fake_client)
       RedmineAiHelper::CustomLogger.stubs(:instance).returns(mock_logger)
       RedmineAiHelper::Tools::McpTools.stubs(:generate_tool_classes).returns(build_fake_tool_instances)
 
@@ -261,6 +262,45 @@ class McpServerLoaderTest < ActiveSupport::TestCase
       http_config = { "url" => "https://example.com" }
       assert @loader.send(:valid_server_config?, http_config)
       assert_equal "http", http_config["type"]
+    end
+
+    should "replace current user api key placeholders in headers and env" do
+      config = {
+        "type" => "http",
+        "url" => "https://example.com/mcp",
+        "headers" => {
+          "X-Redmine-API-Key" => "${current_user_api_key}",
+          "Authorization" => "Bearer {{current_user_api_key}}",
+        },
+        "env" => {
+          "REDMINE_API_KEY" => "__CURRENT_USER_API_KEY__",
+        },
+      }
+
+      user = mock("user")
+      user.stubs(:logged?).returns(true)
+      user.stubs(:api_key).returns("abc123")
+
+      resolved = @loader.send(:resolve_dynamic_auth_config, "custom", config, current_user: user)
+
+      assert_equal "abc123", resolved["headers"]["X-Redmine-API-Key"]
+      assert_equal "Bearer abc123", resolved["headers"]["Authorization"]
+      assert_equal "abc123", resolved["env"]["REDMINE_API_KEY"]
+    end
+
+    should "inject current user redmine api key for redmine servers when missing" do
+      config = {
+        "type" => "http",
+        "url" => "https://redmine.example.com/mcp",
+      }
+
+      user = mock("user")
+      user.stubs(:logged?).returns(true)
+      user.stubs(:api_key).returns("redmine_user_key")
+
+      resolved = @loader.send(:resolve_dynamic_auth_config, "redmine_search", config, current_user: user)
+
+      assert_equal "redmine_user_key", resolved["headers"]["X-Redmine-API-Key"]
     end
   end
 
