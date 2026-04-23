@@ -48,6 +48,12 @@ module AiHelper
     # @yieldparam stream_proc [Proc] block to call with incremental response fragments.
     # @return [void]
     def stream_llm_response(close_stream: true, &block)
+      # ActionController::Live runs the response body in a new thread where
+      # ActiveSupport::CurrentAttributes (and therefore User.current) is reset.
+      # Capture the authenticated user here, on the request thread, and restore
+      # it inside the streaming thread so all tool calls see the correct user.
+      streaming_user = User.current
+
       prepare_streaming_headers
 
       response_id = "chatcmpl-#{SecureRandom.hex(12)}"
@@ -85,6 +91,7 @@ module AiHelper
         })
       end
 
+      User.current = streaming_user
       block.call(stream_proc)
 
       write_chunk({
