@@ -48,11 +48,29 @@ module AiHelper
     # @yieldparam stream_proc [Proc] block to call with incremental response fragments.
     # @return [void]
     def stream_llm_response(close_stream: true, &block)
-      # ActionController::Live runs the response body in a new thread where
-      # ActiveSupport::CurrentAttributes (and therefore User.current) is reset.
-      # Capture the authenticated user here, on the request thread, and restore
-      # it inside the streaming thread so all tool calls see the correct user.
+      # ActionController::Live spawns a new thread and uses IsolatedExecutionState.share_with,
+      # which shallow-dups the state hash. Both threads initially share the same
+      # CurrentAttributes instances (e.g. User::CurrentUser). The main (t1) thread's
+      # Rack executor calls CurrentAttributes.reset_all (to_complete callback) once the
+      # response commits, resetting the shared instance and wiping User.current in this
+      # streaming thread too — causing all tool calls (e.g. read_issues) to run as the
+      # anonymous user.
+      #
+      # Fix: before the first write_chunk commits the response (unblocking t1), give this
+      # thread its own dup'd copy of every CurrentAttributes instance. When t1 resets its
+      # original instance (replacing @attributes with a new empty hash), our dup still
+      # holds a reference to the old @attributes hash with the authenticated user intact.
       streaming_user = User.current
+
+      begin
+        ca_instances = ActiveSupport::IsolatedExecutionState[:current_attributes_instances]
+        if ca_instances.is_a?(Hash) && !ca_instances.empty?
+          ActiveSupport::IsolatedExecutionState[:current_attributes_instances] =
+            ca_instances.transform_values(&:dup)
+        end
+      rescue => e
+        ai_helper_logger.warn "Could not isolate CurrentAttributes for streaming thread: #{e.message}"
+      end
 
       prepare_streaming_headers
 
