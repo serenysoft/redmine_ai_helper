@@ -1,163 +1,168 @@
+---
 ja:
-  project_module_ai_helper: "AIヘルパー"
-  label_ai_helper: "AIヘルパー"
-  label_chat_placeholder: "メッセージを入力してください..."
-  label_ai_helper_input_newline: "Shift + Enter で改行します。"
+  project_module_ai_helper: AIヘルパー
+  label_ai_helper: AIヘルパー
+  label_chat_placeholder: メッセージを入力してください...
+  label_ai_helper_input_newline: Shift + Enter で改行します。
   label_ai_helper_custom_command_hint: "'/'でカスタムコマンドを入力できます。"
-  label_ai_helper_start_new_chat: "新しいチャットを開始"
-  label_ai_helper_free_input_option: "その他（自分で入力）"
-  ai_helper_summary: "AIヘルパーで要約"
-  ai_helper_similar_issues: "AIヘルパーで類似チケットを検索"
-  ai_helper_find_similar_issues: "類似チケットを検索"
-  ai_helper_similarity: "類似度"
-  ai_helper_no_similar_issues_found: "類似するチケットが見つかりませんでした"
-  ai_helper_scope_current_project: "このプロジェクト内"
-  ai_helper_scope_with_subprojects: "サブプロジェクトを含める"
-  ai_helper_scope_all_projects: "全プロジェクト"
+  label_ai_helper_start_new_chat: 新しいチャットを開始
+  label_ai_helper_free_input_option: その他（自分で入力）
+  ai_helper_summary: AIヘルパーで要約
+  ai_helper_similar_issues: AIヘルパーで類似チケットを検索
+  ai_helper_find_similar_issues: 類似チケットを検索
+  ai_helper_similarity: 類似度
+  ai_helper_no_similar_issues_found: 類似するチケットが見つかりませんでした
+  ai_helper_scope_current_project: このプロジェクト内
+  ai_helper_scope_with_subprojects: サブプロジェクトを含める
+  ai_helper_scope_all_projects: 全プロジェクト
   ai_helper_text_summary_generated_time: "%{time} に生成"
-  ai_helper_error_occurred: "エラーが発生しました"
-  permission_view_ai_helper: "AIヘルパーの表示"
-  permission_settings_ai_helper: "プロジェクトの設定"
-  permission_delete_ai_helper_health_reports: "健全性レポートの削除"
-  label_ai_helper_error: "エラー"
-  label_ai_helper_health_report_history: "レポート履歴"
-  label_ai_helper_health_report_detail: "レポート詳細"
-  label_ai_helper_report_period: "対象期間"
-  label_ai_helper_select_report_to_view: "レポートを生成するか、左の履歴から選択してください"
-  label_ai_helper_report_detail_mobile: "レポート詳細"
-  label_ai_helper_close_detail: "詳細を閉じる"
+  ai_helper_error_occurred: エラーが発生しました
+  permission_view_ai_helper: AIヘルパーの表示
+  permission_settings_ai_helper: プロジェクトの設定
+  permission_delete_ai_helper_health_reports: 健全性レポートの削除
+  label_ai_helper_error: エラー
+  label_ai_helper_health_report_history: レポート履歴
+  label_ai_helper_health_report_detail: レポート詳細
+  label_ai_helper_report_period: 対象期間
+  label_ai_helper_select_report_to_view: レポートを生成するか、左の履歴から選択してください
+  label_ai_helper_report_detail_mobile: レポート詳細
+  label_ai_helper_close_detail: 詳細を閉じる
   ai_helper:
-    notice_sub_issues_added: "子チケットが追加されました"
+    notice_sub_issues_added: 子チケットが追加されました
     error_invalid_assignee: "'%{subject}' の担当者が無効です。このトラッカーに対する権限がありません"
     chat:
-      planning: "実行計画を作成中..."
-      generating_final_response: "最終回答を作成しています..."
+      planning: 実行計画を作成中...
+      generating_final_response: 最終回答を作成しています...
     project_health:
-      title: "プロジェクト健全性レポート"
-      pdf_title: "プロジェクト健全性レポート"
-      generate_report: "レポートを生成"
-      generating: "生成中"
+      title: プロジェクト健全性レポート
+      pdf_title: プロジェクト健全性レポート
+      generate_report: レポートを生成
+      generating: 生成中
       placeholder: "「レポートを生成」をクリックして、プロジェクトメトリクスを分析し洞察を得てください。"
-      note: "レポートでは、チケット統計、タイミングメトリクス、作業負荷分布を分析し、実行可能な推奨事項を提供します。"
-      no_report_available: "PDF出力可能な健全性レポートがありません"
-      report_content: "健全性レポート内容"
+      note: レポートでは、チケット統計、タイミングメトリクス、作業負荷分布を分析し、実行可能な推奨事項を提供します。
+      no_report_available: PDF出力可能な健全性レポートがありません
+      report_content: 健全性レポート内容
     health_report_comparison:
-      compare_button: "レポート比較"
-      comparison_column: "比較"
-      page_title: "ヘルスレポート比較"
-      old_report: "旧レポート"
-      new_report: "新レポート"
-      analyze_button: "変化を分析"
-      placeholder: "AI比較分析を自動で生成しています"
-      analysis_title: "比較分析"
-      error_select_two_reports: "比較する2つの異なるレポートを選択してください"
+      compare_button: レポート比較
+      comparison_column: 比較
+      page_title: ヘルスレポート比較
+      old_report: 旧レポート
+      new_report: 新レポート
+      analyze_button: 変化を分析
+      placeholder: AI比較分析を自動で生成しています
+      analysis_title: 比較分析
+      error_select_two_reports: 比較する2つの異なるレポートを選択してください
     generate_issue_reply:
-      title: "AIヘルパーでコメント案を作成"
-      instructions: "回答内容の要点や指示を記入してください。"
-      generated_reply: "生成されたコメント"
-      apply: "適用"
+      title: AIヘルパーでコメント案を作成
+      instructions: 回答内容の要点や指示を記入してください。
+      generated_reply: 生成されたコメント
+      apply: 適用
     typo_check:
-      toggle_label: "AI誤字脱字チェック"
-      check_button: "AIヘルパーで誤字脱字チェック"
-      suggestions_title: "修正提案"
-      no_suggestions: "修正すべき箇所は見つかりませんでした"
-      accept_suggestion: "適用"
-      dismiss_suggestion: "却下"
-      accept_all: "すべて適用"
-      dismiss_all: "すべて却下"
-      close: "閉じる"
-      checking: "チェック中..."
-      error_occurred: "エラーが発生しました"
-      copy_to_clipboard: "クリップボードにコピー"
-      correction_tooltip: "修正候補"
-      apply_failed: "修正適用に失敗しました。テキストの位置が見つかりません"
+      toggle_label: AI誤字脱字チェック
+      check_button: AIヘルパーで誤字脱字チェック
+      suggestions_title: 修正提案
+      no_suggestions: 修正すべき箇所は見つかりませんでした
+      accept_suggestion: 適用
+      dismiss_suggestion: 却下
+      accept_all: すべて適用
+      dismiss_all: すべて却下
+      close: 閉じる
+      checking: チェック中...
+      error_occurred: エラーが発生しました
+      copy_to_clipboard: クリップボードにコピー
+      correction_tooltip: 修正候補
+      apply_failed: 修正適用に失敗しました。テキストの位置が見つかりません
     generate_sub_issues:
-      title: "AIヘルパーで子チケットを作成"
-      instructions: "指示を入力してください。"
-      generate_draft: "ドラフトを生成"
+      title: AIヘルパーで子チケットを作成
+      instructions: 指示を入力してください。
+      generate_draft: ドラフトを生成
     autocompletion:
-      loading: "AI提案を生成中..."
-      no_suggestions: "提案がありません"
-      accept_suggestion: "提案を適用"
-      dismiss: "閉じる"
-      enabled_tooltip: "AI自動補完が有効です。Tabキーで提案を適用、Escキーで閉じます。"
-      disabled_tooltip: "AI自動補完が無効です。チェックボックスをオンにして有効化してください。"
-      note_enabled_tooltip: "AIノート自動補完が有効です。Tabキーで提案を適用、Escキーで閉じます。"
-      note_disabled_tooltip: "AIノート自動補完が無効です。チェックボックスをオンにして有効化してください。"
-      common_toggle_label: "AIヘルパーで補完"
+      loading: AI提案を生成中...
+      no_suggestions: 提案がありません
+      accept_suggestion: 提案を適用
+      dismiss: 閉じる
+      enabled_tooltip: AI自動補完が有効です。Tabキーで提案を適用、Escキーで閉じます。
+      disabled_tooltip: AI自動補完が無効です。チェックボックスをオンにして有効化してください。
+      note_enabled_tooltip: AIノート自動補完が有効です。Tabキーで提案を適用、Escキーで閉じます。
+      note_disabled_tooltip: AIノート自動補完が無効です。チェックボックスをオンにして有効化してください。
+      common_toggle_label: AIヘルパーで補完
     assignment_suggestion:
-      link_label: "AIヘルパーで担当者を提案"
-      loading: "担当者を分析中..."
-      close: "閉じる"
-      no_suggestions: "該当なし"
+      link_label: AIヘルパーで担当者を提案
+      loading: 担当者を分析中...
+      close: 閉じる
+      no_suggestions: 該当なし
       history_based:
-        title: "過去の類似チケットの担当履歴からの提案"
-        score: "類似度"
-        similar_count: "類似チケット数"
-        similar_issues: "判断根拠となった類似チケット"
-        more_issues: "他%{count}件"
+        title: 過去の類似チケットの担当履歴からの提案
+        score: 類似度
+        similar_count: 類似チケット数
+        similar_issues: 判断根拠となった類似チケット
+        more_issues: 他%{count}件
       workload_based:
-        title: "現在の負荷状況からの提案"
-        open_issues: "担当中"
-        issues_unit: "件"
+        title: 現在の負荷状況からの提案
+        open_issues: 担当中
+        issues_unit: 件
       instruction_based:
-        title: "ユーザーインストラクションからの提案"
-        reason: "理由"
-      error: "担当者提案の取得中にエラーが発生しました"
-      empty_content: "題名または説明を入力してください"
+        title: ユーザーインストラクションからの提案
+        reason: 理由
+      error: 担当者提案の取得中にエラーが発生しました
+      empty_content: 題名または説明を入力してください
     stuff_todo:
-      menu_label: "やること"
-      modal_title: "やること提案"
-      loading: "読み込み中..."
-      error: "エラーが発生しました"
+      menu_label: やること
+      modal_title: やること提案
+      loading: 読み込み中...
+      error: エラーが発生しました
     duplicate_check:
-      title: "AIヘルパーで重複チェック"
-      button: "AIヘルパーで重複チェック"
-      loading: "類似チケットを検索中..."
-      empty_content: "件名または説明を入力してから重複チェックを実行してください"
+      title: AIヘルパーで重複チェック
+      button: AIヘルパーで重複チェック
+      loading: 類似チケットを検索中...
+      empty_content: 件名または説明を入力してから重複チェックを実行してください
     model_profiles:
-      create_profile_title: "新しいモデルプロファイル"
-      edit_profile_title: "モデルプロファイルの編集"
-      test_connection: "接続テスト"
-      test_connection_success: "接続成功"
-      test_connection_failed: "接続失敗"
+      create_profile_title: 新しいモデルプロファイル
+      edit_profile_title: モデルプロファイルの編集
+      test_connection: 接続テスト
+      test_connection_success: 接続成功
+      test_connection_failed: 接続失敗
       messages:
-        confirm_delete: "このモデルプロファイルを削除してもよろしいですか？"
-        must_be_valid_url: "は有効なURLを入力してください"
-        required_fields_missing: "必須フィールドが未入力です。"
-        access_key_required: "接続テストにはアクセスキーが必要です。"
+        confirm_delete: このモデルプロファイルを削除してもよろしいですか？
+        must_be_valid_url: は有効なURLを入力してください
+        required_fields_missing: 必須フィールドが未入力です。
+        access_key_required: 接続テストにはアクセスキーが必要です。
     prompts:
       current_page_info:
-        project_page: "プロジェクト「%{project_name}」の情報ページです"
-        issue_detail_page: "チケット #%{issue_id} の詳細\nユーザが特にIDや名前を指定せずにただ「チケット」といった場合にはこのチケットのことです。"
-        issue_list_page: "チケット一覧"
-        issue_with_action_page: "チケットの%{action_name}ページです"
-        wiki_page: "「%{page_title}」というタイトルのWikiページを表示しています。\nユーザが特にタイトルを指定せずにただ「Wikiページ」や「ページ」といった場合にはこのWikiページのことです。"
-        repository_page: "リポジトリ「%{repo_name}」の情報ページです。リポジトリのIDは %{repo_id} です。"
-        repository_file_page: "リポジトリのファイル情報のページです。表示しているファイルパスは %{path} です。リビジョンは %{rev} です。リポジトリは「 %{repo_name}」です。リポジトリのIDは %{repo_id} です。"
+        project_page: プロジェクト「%{project_name}」の情報ページです
+        issue_detail_page: |-
+          チケット #%{issue_id} の詳細
+          ユーザが特にIDや名前を指定せずにただ「チケット」といった場合にはこのチケットのことです。
+        issue_list_page: チケット一覧
+        issue_with_action_page: チケットの%{action_name}ページです
+        wiki_page: |-
+          「%{page_title}」というタイトルのWikiページを表示しています。
+          ユーザが特にタイトルを指定せずにただ「Wikiページ」や「ページ」といった場合にはこのWikiページのことです。
+        repository_page: リポジトリ「%{repo_name}」の情報ページです。リポジトリのIDは %{repo_id} です。
+        repository_file_page: リポジトリのファイル情報のページです。表示しているファイルパスは %{path} です。リビジョンは %{rev} です。リポジトリは「 %{repo_name}」です。リポジトリのIDは %{repo_id} です。
         repository_diff:
-          page: "リポジトリ「%{repo_name}」の変更差分ページです。リポジトリのIDは %{repo_id} です。"
-          rev: "リビジョンは %{rev} です。"
-          rev_to: "リビジョンは %{rev} から %{rev_to} です。"
-          path: "ファイルパスは %{path} です。"
-        repository_revision_page: "リポジトリ「%{repo_name}」のリビジョン情報ページです。リビジョンは %{rev}} です。リポジトリのIDは %{repo_id} です。"
-        repository_other_page: "リポジトリの情報ページです"
+          page: リポジトリ「%{repo_name}」の変更差分ページです。リポジトリのIDは %{repo_id} です。
+          rev: リビジョンは %{rev} です。
+          rev_to: リビジョンは %{rev} から %{rev_to} です。
+          path: ファイルパスは %{path} です。
+        repository_revision_page: リポジトリ「%{repo_name}」のリビジョン情報ページです。リビジョンは %{rev}} です。リポジトリのIDは %{repo_id} です。
+        repository_other_page: リポジトリの情報ページです
         boards:
-          show: "フォーラム「%{board_name}」のページです。フォーラムのIDは %{board_id} です。"
-          index: "フォーラム一覧のページです。"
-          other: "フォーラムのページです。"
+          show: フォーラム「%{board_name}」のページです。フォーラムのIDは %{board_id} です。
+          index: フォーラム一覧のページです。
+          other: フォーラムのページです。
         messages:
-          show: "メッセージ「%{subject}」のページです。メッセージのIDは %{message_id}です。"
-          other: "メッセージのページです。"
+          show: メッセージ「%{subject}」のページです。メッセージのIDは %{message_id}です。
+          other: メッセージのページです。
         versions:
-          show: "バージョン「%{version_name}」のページです。バージョンのIDは %{version_id} です。"
-          other: "バージョンのページです。"
+          show: バージョン「%{version_name}」のページです。バージョンのIDは %{version_id} です。
+          other: バージョンのページです。
         other_page: "%{controller_name}の%{action_name}ページです"
       issue_agent:
-        search_answer_instruction: "なお、「条件に合ったチケットを探して」「こういう条件のチケット見せて」の様な複数のチケットを探すタスクの場合には、search_issuesツールを使ってチケットの一覧を取得し、結果を返してください。"
-        search_answer_instruction_with_vector: "チケットを検索する際は、以下のように使い分けてください：概念的・意味的な検索（「例外に関するチケット」「パフォーマンス問題」「ログイン関連のバグ」など）にはベクトル検索（ask_with_filter）を使用し、明確なフィルタ条件（「ステータスが完了」「担当者が○○」「今月更新された」など属性値で絞り込む場合）にはsearch_issuesを使用してください。"
+        search_answer_instruction: なお、「条件に合ったチケットを探して」「こういう条件のチケット見せて」の様な複数のチケットを探すタスクの場合には、search_issuesツールを使ってチケットの一覧を取得し、結果を返してください。
+        search_answer_instruction_with_vector: チケットを検索する際は、以下のように使い分けてください：概念的・意味的な検索（「例外に関するチケット」「パフォーマンス問題」「ログイン関連のバグ」など）にはベクトル検索（ask_with_filter）を使用し、明確なフィルタ条件（「ステータスが完了」「担当者が○○」「今月更新された」など属性値で絞り込む場合）にはsearch_issuesを使用してください。
       leader_agent:
-        generate_final_response: "全てのエージェントがタスクを完了しました。ユーザーへの最終的な回答を作成してください。回答に離散的な選択肢を提示する質問が含まれる場合は、最後に <!--AIHELPER_OPTIONS:{...}--> ブロックを追加することを忘れないでください。"
+        generate_final_response: 全てのエージェントがタスクを完了しました。ユーザーへの最終的な回答を作成してください。回答に離散的な選択肢を提示する質問が含まれる場合は、最後に <!--AIHELPER_OPTIONS:{...}--> ブロックを追加することを忘れないでください。
     custom_commands:
       label:
         title: カスタムコマンド
@@ -177,52 +182,51 @@ ja:
       field:
         scope: スコープ
       text:
-        name_format: "英数字、アンダースコア、ハイフンのみ使用可能"
-        variables_help: "使用可能な変数: {input}, {project_name}, {user_name}, {datetime}"
+        name_format: 英数字、アンダースコア、ハイフンのみ使用可能
+        variables_help: '使用可能な変数: {input}, {project_name}, {user_name}, {datetime}'
       error:
-        name_duplicate: "コマンド名が既に使用されています"
-        project_required: "プロジェクトコマンドにはプロジェクトが必要です"
+        name_duplicate: コマンド名が既に使用されています
+        project_required: プロジェクトコマンドにはプロジェクトが必要です
   activerecord:
     models:
-      ai_helper_model_profile: "モデルプロファイル"
-      ai_helper_setting: "AIヘルパー設定"
-      ai_helper_custom_command: "カスタムコマンド"
+      ai_helper_model_profile: モデルプロファイル
+      ai_helper_setting: AIヘルパー設定
+      ai_helper_custom_command: カスタムコマンド
     attributes:
       ai_helper_model_profile:
-        llm_type: "タイプ"
-        llm_model: "モデル名"
-        access_key: "アクセスキー"
-        temperature: "Temperature"
-        organization_id: "Organization ID"
-        base_uri: "ベースURI"
-        max_tokens: "MAXトークン数"
+        llm_type: タイプ
+        llm_model: モデル名
+        access_key: アクセスキー
+        temperature: 温度
+        organization_id: 組織ID
+        base_uri: ベースURI
+        max_tokens: MAXトークン数
       ai_helper_setting:
-        model_profile_id: "モデル定義"
-        additional_instructions: "追加の指示"
-        attachment_send_enabled: "添付ファイルをLLMに送信する"
-        attachment_max_size_mb: "添付ファイルの最大サイズ(MB)"
-        vector_search_enabled: "ベクトル検索を有効にする"
-        vector_search_uri: "URI"
-        vector_search_api_key: "APIキー"
-        embedding_model: "埋め込みモデル"
-        dimension: "次元数"
-        use_think_model: "Thinkモデルを使用する"
-        think_model_profile_id: "Thinkモデルプロファイル"
-        think_model_description: "健全性レポートの生成やチケット回答案の作成など、高度な推論が必要なタスクに別のモデルを使用します。"
-        use_vector_model_profile: "ベクトル検索用モデルプロファイルを使用する"
-        vector_model_profile_id: "ベクトル検索用モデルプロファイル"
-        vector_model_profile_description: "ベクトル検索操作（APIの認証情報とコンテンツ分析）に別のモデルプロファイルを使用します。埋め込みモデル名は上記の「埋め込みモデル」設定で制御されます。"
+        model_profile_id: モデル定義
+        additional_instructions: 追加の指示
+        attachment_send_enabled: 添付ファイルをLLMに送信する
+        attachment_max_size_mb: 添付ファイルの最大サイズ(MB)
+        vector_search_enabled: ベクトル検索を有効にする
+        vector_search_uri: URIアドレス
+        vector_search_api_key: APIキー
+        embedding_model: 埋め込みモデル
+        dimension: 次元数
+        use_think_model: Thinkモデルを使用する
+        think_model_profile_id: Thinkモデルプロファイル
+        think_model_description: 健全性レポートの生成やチケット回答案の作成など、高度な推論が必要なタスクに別のモデルを使用します。
+        use_vector_model_profile: ベクトル検索用モデルプロファイルを使用する
+        vector_model_profile_id: ベクトル検索用モデルプロファイル
+        vector_model_profile_description: ベクトル検索操作（APIの認証情報とコンテンツ分析）に別のモデルプロファイルを使用します。埋め込みモデル名は上記の「埋め込みモデル」設定で制御されます。
       ai_helper_project_setting:
-        issue_draft_instructions: "チケットのコメントを生成する際の指示"
-        subtask_instructions: "子チケットを生成する際の指示"
-        health_report_instructions: "健全性レポートを生成する際の指示"
-        assignment_suggestion_instructions: "担当者提案インストラクション"
+        issue_draft_instructions: チケットのコメントを生成する際の指示
+        subtask_instructions: 子チケットを生成する際の指示
+        health_report_instructions: 健全性レポートを生成する際の指示
+        assignment_suggestion_instructions: 担当者提案インストラクション
       ai_helper_custom_command:
-        name: "コマンド名"
-        command_type: "コマンドタイプ"
-        project_id: "プロジェクト"
-        prompt: "プロンプト"
-        description: "説明"
-        user_scope: "スコープ"
-
-  field_id: "ID"
+        name: コマンド名
+        command_type: コマンドタイプ
+        project_id: プロジェクト
+        prompt: プロンプト
+        description: 説明
+        user_scope: スコープ
+  field_id: 識別子

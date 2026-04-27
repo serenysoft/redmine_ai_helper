@@ -1,84 +1,233 @@
+---
 fa:
-  project_module_ai_helper: "دستیار هوش مصنوعی"
-  label_ai_helper: "دستیار هوش مصنوعی"
-  label_chat_placeholder: "پیام خود را اینجا بنویسید..."
-  label_ai_helper_input_newline: "برای خط جدید Shift + Enter را فشار دهید."
-  label_ai_helper_start_new_chat: "شروع گفت‌وگوی جدید"
-  ai_helper_summary: "خلاصه‌سازی با دستیار هوش مصنوعی"
-  ai_helper_text_summary_generated_time: "تولید شده در %{time}"
-  ai_helper_error_occurred: "خطایی رخ داده است"
-  permission_view_ai_helper: "مشاهده دستیار هوش مصنوعی"
+  project_module_ai_helper: دستیار هوش مصنوعی
+  label_ai_helper: دستیار هوش مصنوعی
+  label_chat_placeholder: پیام خود را اینجا بنویسید...
+  label_ai_helper_input_newline: برای خط جدید Shift + Enter را فشار دهید.
+  label_ai_helper_start_new_chat: شروع گفت‌وگوی جدید
+  ai_helper_summary: خلاصه‌سازی با دستیار هوش مصنوعی
+  ai_helper_text_summary_generated_time: تولید شده در %{time}
+  ai_helper_error_occurred: خطایی رخ داده است
+  permission_view_ai_helper: مشاهده دستیار هوش مصنوعی
   ai_helper:
-    notice_sub_issues_added: "زیر درخواست‌ها اضافه شدند"
+    notice_sub_issues_added: زیر درخواست‌ها اضافه شدند
     generate_issue_reply:
-      title: "ایجاد پیش‌نویس یادداشت با دستیار هوش مصنوعی"
-      instructions: "لطفاً نکات کلیدی یا دستورالعمل‌های پاسخ را وارد کنید."
-      generated_reply: "یادداشت‌های تولید شده"
-      apply: "اعمال"
-      copy_to_clipboard: "کپی در کلیپ‌بورد"
+      title: ایجاد پیش‌نویس یادداشت با دستیار هوش مصنوعی
+      instructions: لطفاً نکات کلیدی یا دستورالعمل‌های پاسخ را وارد کنید.
+      generated_reply: یادداشت‌های تولید شده
+      apply: اعمال
+      copy_to_clipboard: کپی در کلیپ‌بورد
     stuff_todo:
-      menu_label: "کارهای امروز"
-      modal_title: "پیشنهادات کار"
-      loading: "در حال بارگذاری..."
-      error: "خطایی رخ داده است"
+      menu_label: کارهای امروز
+      modal_title: پیشنهادات کار
+      loading: در حال بارگذاری...
+      error: خطایی رخ داده است
     model_profiles:
-      create_profile_title: "ساخت پروفایل مدل جدید"
-      edit_profile_title: "ویرایش پروفایل مدل"
+      create_profile_title: ساخت پروفایل مدل جدید
+      edit_profile_title: ویرایش پروفایل مدل
       messages:
-        confirm_delete: "آیا از حذف این پروفایل مدل مطمئن هستید؟"
-        must_be_valid_url: "باید یک URL معتبر باشد"
+        confirm_delete: آیا از حذف این پروفایل مدل مطمئن هستید؟
+        must_be_valid_url: باید یک URL معتبر باشد
+        required_fields_missing: فیلدهای الزامی وارد نشده‌اند.
+        access_key_required: برای تست اتصال، کلید دسترسی الزامی است.
+      test_connection: تست اتصال
+      test_connection_success: اتصال موفق بود
+      test_connection_failed: اتصال ناموفق بود
     prompts:
       current_page_info:
-        project_page: "این صفحه اطلاعات پروژه «%{project_name}» است."
-        issue_detail_page: "این صفحه جزئیات برای درخواست شماره %{issue_id} است.\nاگر کاربر بدون اشاره به شماره یا نام، از واژه «درخواست» استفاده کند، منظور این درخواست است."
-        issue_list_page: "این صفحه فهرست درخواست‌ها است."
-        issue_with_action_page: "این صفحه %{action_name} برای درخواست است."
-        wiki_page: "این صفحه ویکی با عنوان «%{page_title}» است.\nاگر کاربر بدون عنوان خاصی از «صفحه» یا «صفحه ویکی» نام ببرد، منظور همین صفحه است."
-        repository_page: "این صفحه اطلاعات مخزن «%{repo_name}» است. شناسه مخزن: %{repo_id}."
-        repository_file_page: "این صفحه اطلاعات فایل در مخزن است. مسیر فایل: %{path}، نسخه: %{rev}، مخزن: «%{repo_name}»، شناسه مخزن: %{repo_id}."
+        project_page: این صفحه اطلاعات پروژه «%{project_name}» است.
+        issue_detail_page: |-
+          این صفحه جزئیات برای درخواست شماره %{issue_id} است.
+          اگر کاربر بدون اشاره به شماره یا نام، از واژه «درخواست» استفاده کند، منظور این درخواست است.
+        issue_list_page: این صفحه فهرست درخواست‌ها است.
+        issue_with_action_page: این صفحه %{action_name} برای درخواست است.
+        wiki_page: |-
+          این صفحه ویکی با عنوان «%{page_title}» است.
+          اگر کاربر بدون عنوان خاصی از «صفحه» یا «صفحه ویکی» نام ببرد، منظور همین صفحه است.
+        repository_page: 'این صفحه اطلاعات مخزن «%{repo_name}» است. شناسه مخزن: %{repo_id}.'
+        repository_file_page: 'این صفحه اطلاعات فایل در مخزن است. مسیر فایل: %{path}، نسخه: %{rev}، مخزن: «%{repo_name}»، شناسه مخزن: %{repo_id}.'
         repository_diff:
-          page: "این صفحه تفاوت (diff) برای مخزن «%{repo_name}» است. شناسه مخزن: %{repo_id}."
-          rev: "نسخه: %{rev}."
-          rev_to: "از نسخه %{rev} تا %{rev_to}."
-          path: "مسیر فایل: %{path}."
-        repository_revision_page: "این صفحه اطلاعات نسخه برای مخزن «%{repo_name}» است. نسخه: %{rev}، شناسه مخزن: %{repo_id}."
-        repository_other_page: "این صفحه اطلاعات مخزن است."
+          page: 'این صفحه تفاوت (diff) برای مخزن «%{repo_name}» است. شناسه مخزن: %{repo_id}.'
+          rev: 'نسخه: %{rev}.'
+          rev_to: از نسخه %{rev} تا %{rev_to}.
+          path: 'مسیر فایل: %{path}.'
+        repository_revision_page: 'این صفحه اطلاعات نسخه برای مخزن «%{repo_name}» است. نسخه: %{rev}، شناسه مخزن: %{repo_id}.'
+        repository_other_page: این صفحه اطلاعات مخزن است.
         boards:
-          show: "این صفحه انجمن «%{board_name}» است. شناسه انجمن: %{board_id}."
-          index: "این صفحه فهرست انجمن‌ها است."
-          other: "این صفحه انجمن است."
+          show: 'این صفحه انجمن «%{board_name}» است. شناسه انجمن: %{board_id}.'
+          index: این صفحه فهرست انجمن‌ها است.
+          other: این صفحه انجمن است.
         messages:
-          show: "این صفحه پیام با عنوان «%{subject}» است. شناسه پیام: %{message_id}."
-          other: "این صفحه پیام است."
+          show: 'این صفحه پیام با عنوان «%{subject}» است. شناسه پیام: %{message_id}.'
+          other: این صفحه پیام است.
         versions:
-          show: "این صفحه نسخه «%{version_name}» است. شناسه نسخه: %{version_id}."
-          other: "این صفحه نسخه است."
-        other_page: "این صفحه %{action_name} برای %{controller_name} است."
+          show: 'این صفحه نسخه «%{version_name}» است. شناسه نسخه: %{version_id}.'
+          other: این صفحه نسخه است.
+        other_page: این صفحه %{action_name} برای %{controller_name} است.
       issue_agent:
-        search_answer_instruction: "برای کارهایی مانند یافتن درخواست‌هایی با شرایط خاص، مانند «یافتن درخواست‌هایی با این شرایط» یا «نشان بده درخواست‌هایی با این معیار»، لطفاً از ابزار search_issues برای بازیابی و بازگرداندن لیست درخواست‌ها استفاده کنید."
-        search_answer_instruction_with_vector: "هنگام جستجوی درخواست‌ها، از ابزار مناسب استفاده کنید: برای جستجوهای مفهومی/معنایی (مثلاً «درخواست‌های مرتبط با استثناها»، «مشکلات عملکرد»)، از جستجوی برداری (ask_with_filter) استفاده کنید. برای شرایط فیلتر صریح (مثلاً «وضعیت بسته»، «تخصیص به کسی»)، از search_issues استفاده کنید."
+        search_answer_instruction: برای کارهایی مانند یافتن درخواست‌هایی با شرایط خاص، مانند «یافتن درخواست‌هایی با این شرایط» یا «نشان بده درخواست‌هایی با این معیار»، لطفاً از ابزار search_issues برای بازیابی و بازگرداندن لیست درخواست‌ها استفاده کنید.
+        search_answer_instruction_with_vector: 'هنگام جستجوی درخواست‌ها، از ابزار مناسب استفاده کنید: برای جستجوهای مفهومی/معنایی (مثلاً «درخواست‌های مرتبط با استثناها»، «مشکلات عملکرد»)، از جستجوی برداری (ask_with_filter) استفاده کنید. برای شرایط فیلتر صریح (مثلاً «وضعیت بسته»، «تخصیص به کسی»)، از search_issues استفاده کنید.'
       leader_agent:
-        generate_final_response: "همه مأمورین وظایف خود را انجام داده‌اند. لطفاً پاسخ نهایی را برای کاربر ایجاد کنید. اگر پاسخ شما شامل سؤالی با گزینه‌های مجزا است، به یاد داشته باشید که بلوک <!--AIHELPER_OPTIONS:{...}--> را در انتها اضافه کنید."
+        generate_final_response: همه مأمورین وظایف خود را انجام داده‌اند. لطفاً پاسخ نهایی را برای کاربر ایجاد کنید. اگر پاسخ شما شامل سؤالی با گزینه‌های مجزا است، به یاد داشته باشید که بلوک <!--AIHELPER_OPTIONS:{...}--> را در انتها اضافه کنید.
+    error_invalid_assignee: مسئول نامعتبر برای '%{subject}' - کاربر برای این رهگیر مجاز نیست
+    chat:
+      planning: در حال ایجاد برنامه اجرا...
+      generating_final_response: در حال تولید پاسخ نهایی...
+    project_health:
+      title: گزارش سلامت پروژه
+      pdf_title: گزارش سلامت پروژه
+      generate_report: تولید گزارش
+      generating: در حال تولید
+      placeholder: برای تحلیل شاخص‌های پروژه و دریافت بینش، روی 'تولید گزارش' کلیک کنید.
+      note: این گزارش آمار درخواست‌ها، شاخص‌های زمانی و توزیع بار کاری را تحلیل کرده و پیشنهادهای عملی ارائه می‌دهد.
+      no_report_available: گزارش سلامتی برای خروجی PDF موجود نیست
+      report_content: محتوای گزارش سلامت
+    health_report_comparison:
+      compare_button: مقایسه گزارش‌ها
+      comparison_column: مقایسه
+      page_title: مقایسه گزارش سلامت
+      old_report: گزارش قبلی
+      new_report: گزارش جدید
+      analyze_button: تحلیل تغییرات
+      placeholder: تحلیل مقایسه‌ای به صورت خودکار آغاز می‌شود
+      analysis_title: تحلیل مقایسه‌ای
+      error_select_two_reports: لطفاً دو گزارش متفاوت را برای مقایسه انتخاب کنید
+    typo_check:
+      toggle_label: بررسی غلط املایی با هوش مصنوعی
+      check_button: بررسی غلط املایی با دستیار هوش مصنوعی
+      suggestions_title: پیشنهادهای اصلاح
+      no_suggestions: هیچ خطای املایی یافت نشد
+      accept_suggestion: پذیرش
+      dismiss_suggestion: رد
+      accept_all: پذیرش همه
+      dismiss_all: رد همه
+      close: بستن
+      checking: در حال بررسی...
+      error_occurred: خطایی رخ داده است
+      copy_to_clipboard: کپی در کلیپ‌بورد
+      correction_tooltip: پیشنهاد اصلاح
+      apply_failed: اعمال اصلاح ناموفق بود. موقعیت متن پیدا نشد
+    generate_sub_issues:
+      title: ایجاد زیرکار با دستیار هوش مصنوعی
+      instructions: لطفاً دستورالعمل‌های خود را وارد کنید.
+      generate_draft: تولید پیش‌نویس
+    autocompletion:
+      loading: در حال تولید پیشنهادهای هوش مصنوعی...
+      no_suggestions: پیشنهادی موجود نیست
+      accept_suggestion: پذیرش پیشنهاد
+      dismiss: بستن
+      enabled_tooltip: تکمیل خودکار هوش مصنوعی فعال است. برای پذیرش Tab و برای بستن Esc را فشار دهید.
+      disabled_tooltip: تکمیل خودکار هوش مصنوعی غیرفعال است. برای فعال‌سازی تیک بزنید.
+      note_enabled_tooltip: تکمیل خودکار یادداشت فعال است. برای پذیرش Tab و برای بستن Esc را فشار دهید.
+      note_disabled_tooltip: تکمیل خودکار یادداشت غیرفعال است. برای فعال‌سازی تیک بزنید.
+      common_toggle_label: تکمیل با دستیار هوش مصنوعی
+    assignment_suggestion:
+      link_label: پیشنهاد مسئول با دستیار هوش مصنوعی
+      loading: در حال تحلیل مسئولان...
+      close: بستن
+      no_suggestions: پیشنهادی وجود ندارد
+      history_based:
+        title: پیشنهادها بر اساس تاریخچه درخواست‌های مشابه
+        score: شباهت
+        similar_count: تعداد درخواست‌های مشابه
+        similar_issues: درخواست‌های مشابه استفاده‌شده برای پیشنهاد
+        more_issues: "%{count} مورد دیگر"
+      workload_based:
+        title: پیشنهادها بر اساس بار کاری فعلی
+        open_issues: درخواست‌های باز
+        issues_unit: مورد
+      instruction_based:
+        title: پیشنهادها بر اساس دستورالعمل کاربر
+        reason: دلیل
+      error: هنگام دریافت پیشنهاد مسئول خطایی رخ داد
+      empty_content: لطفاً عنوان یا توضیحات را وارد کنید
+    duplicate_check:
+      title: بررسی موارد تکراری با دستیار هوش مصنوعی
+      button: بررسی موارد تکراری با دستیار هوش مصنوعی
+      loading: در حال جستجوی درخواست‌های مشابه...
+      empty_content: لطفاً قبل از بررسی موارد تکراری، عنوان یا توضیحات را وارد کنید
+    custom_commands:
+      label:
+        title: فرمان‌های سفارشی
+        new: فرمان سفارشی جدید
+        no_data: هیچ فرمان سفارشی ثبت نشده است
+      command_type:
+        global: فرمان‌های سراسری
+        project: فرمان‌های پروژه
+        user: فرمان‌های کاربر
+      command_type_description:
+        global: فرمان‌هایی که در همه پروژه‌های دارای دستیار هوش مصنوعی مشترک هستند.
+        project: فرمان‌هایی که فقط در همین پروژه مشترک هستند.
+        user: فرمان‌هایی که فقط شما می‌توانید استفاده کنید.
+      user_scope:
+        common: عمومی
+        project_limited: محدود به پروژه
+      field:
+        scope: دامنه
+      text:
+        name_format: فقط حروف و اعداد، زیرخط و خط تیره مجاز است
+        variables_help: 'متغیرهای قابل استفاده: {input}، {project_name}، {user_name}، {datetime}'
+      error:
+        name_duplicate: نام فرمان قبلاً استفاده شده است
+        project_required: فرمان‌های پروژه نیازمند پروژه هستند
   activerecord:
     models:
-      ai_helper_model_profile: "پروفایل مدل"
-      ai_helper_setting: "تنظیمات دستیار هوش مصنوعی"
+      ai_helper_model_profile: پروفایل مدل
+      ai_helper_setting: تنظیمات دستیار هوش مصنوعی
+      ai_helper_custom_command: فرمان سفارشی
     attributes:
       ai_helper_model_profile:
-        llm_type: "نوع"
-        llm_model: "نام مدل"
-        access_key: "کلید دسترسی"
-        temperature: "دما (Temperature)"
-        organization_id: "شناسه سازمان"
-        base_uri: "آدرس پایه (Base URI)"
-        max_tokens: "حداکثر تعداد توکن‌ها"
+        llm_type: نوع
+        llm_model: نام مدل
+        access_key: کلید دسترسی
+        temperature: دما (Temperature)
+        organization_id: شناسه سازمان
+        base_uri: آدرس پایه (Base URI)
+        max_tokens: حداکثر تعداد توکن‌ها
       ai_helper_setting:
-        model_profile_id: "پروفایل مدل"
-        additional_instructions: "دستورالعمل‌های اضافی"
-        attachment_send_enabled: "Send attachments to LLM"
-        attachment_max_size_mb: "Maximum attachment size (MB)"
-        vector_search_enabled: "فعالسازی جستجوی برداری"
-        vector_search_uri: "آدرس URI"
-        vector_search_api_key: "کلید API"
-        embedding_model: "مدل embedding"
-        dimension: "بعد (Dimension)"
+        model_profile_id: پروفایل مدل
+        additional_instructions: دستورالعمل‌های اضافی
+        attachment_send_enabled: ارسال پیوست‌ها به LLM
+        attachment_max_size_mb: حداکثر اندازه پیوست (MB)
+        vector_search_enabled: فعالسازی جستجوی برداری
+        vector_search_uri: نشانی URI
+        vector_search_api_key: کلید API
+        embedding_model: مدل embedding
+        dimension: بعد (Dimension)
+        use_think_model: استفاده از مدل تفکر
+        think_model_profile_id: پروفایل مدل تفکر
+        think_model_description: برای کارهایی که به استدلال عمیق‌تری نیاز دارند، مانند تولید گزارش سلامت و پیش‌نویس پاسخ درخواست، از مدل جداگانه استفاده کنید.
+        use_vector_model_profile: استفاده از پروفایل مدل برداری
+        vector_model_profile_id: پروفایل مدل برداری
+        vector_model_profile_description: 'برای عملیات جستجوی برداری (اعتبارنامه API و تحلیل محتوا) از یک پروفایل مدل جداگانه استفاده کنید. توجه: نام مدل تعبیه همچنان توسط تنظیم «مدل embedding» در بالا کنترل می‌شود.'
+      ai_helper_project_setting:
+        issue_draft_instructions: دستورالعمل تولید پاسخ برای درخواست
+        subtask_instructions: دستورالعمل تولید زیرکار
+        health_report_instructions: دستورالعمل تولید گزارش سلامت
+        assignment_suggestion_instructions: دستورالعمل پیشنهاد مسئول
+      ai_helper_custom_command:
+        name: نام فرمان
+        command_type: نوع فرمان
+        project_id: پروژه
+        prompt: پرامپت
+        description: توضیح
+        user_scope: دامنه
+  label_ai_helper_custom_command_hint: برای استفاده از فرمان‌های سفارشی '/' را تایپ کنید.
+  label_ai_helper_free_input_option: سایر (خودتان وارد کنید)
+  ai_helper_similar_issues: یافتن درخواست‌های مشابه با دستیار هوش مصنوعی
+  ai_helper_find_similar_issues: یافتن درخواست‌های مشابه
+  ai_helper_similarity: شباهت
+  ai_helper_no_similar_issues_found: درخواست مشابهی پیدا نشد
+  ai_helper_scope_current_project: پروژه فعلی
+  ai_helper_scope_with_subprojects: شامل زیرپروژه‌ها
+  ai_helper_scope_all_projects: همه پروژه‌ها
+  permission_settings_ai_helper: تنظیمات پروژه
+  permission_delete_ai_helper_health_reports: حذف گزارش‌های سلامت
+  label_ai_helper_error: خطا
+  label_ai_helper_health_report_history: تاریخچه گزارش‌ها
+  label_ai_helper_health_report_detail: جزئیات گزارش
+  label_ai_helper_report_period: بازه زمانی
+  label_ai_helper_select_report_to_view: یک گزارش تولید کنید یا از تاریخچه سمت چپ انتخاب کنید
+  label_ai_helper_report_detail_mobile: جزئیات گزارش
+  label_ai_helper_close_detail: بستن جزئیات
+  field_id: شناسه
